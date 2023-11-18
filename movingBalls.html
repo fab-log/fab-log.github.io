@@ -22,14 +22,25 @@
     }
 
     .balls {
-      position:absolute;
+      position: absolute;
       left:0px;
       top:0px;
       width:120px;
       height:120px;
       border-radius:50%;
       opacity: 0.5;
-      box-shadow: 0 0 25px black;
+      box-shadow: 0 25px 25px black;
+    }
+
+    .reflexions {
+      position: absolute;
+      left:49px;
+      top:0px;
+      width:20px;
+      height:5px;
+      border: solid 3px white;
+      border-radius:50%;
+      opacity: 0.2;
     }
 
     #ball1 {
@@ -51,9 +62,9 @@
 
   <div class="court">
 
-    <div class="balls" id="ball1"></div>
-    <div class="balls" id="ball2"></div>
-    <div class="balls" id="ball3"></div>
+    <div class="balls" id="ball1"><div class="reflexions"></div></div>
+    <div class="balls" id="ball2"><div class="reflexions"></div></div>
+    <div class="balls" id="ball3"><div class="reflexions"></div></div>
 
   </div>
 
