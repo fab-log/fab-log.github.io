@@ -7,7 +7,7 @@
 
   <style>
     body {
-      background-color: hsl(0, 0%, 6%);
+      background-color: hsl(0, 0%, 12%);
     }
 
     .court {
@@ -19,8 +19,8 @@
       transform: translate(-50%, -50%);
       border: dotted 10px hsl(30, 0%, 10%);
       border-radius: 60px;
-      background-color: hsl(0, 0%, 12%);
-      box-shadow: 0 10px 15px black inset;
+      background-color: hsl(0, 0%, 18%);
+      box-shadow: 0 5px 15px black inset;
     }
 
     .balls {
@@ -45,7 +45,7 @@
     #ball1 {
       width:100px;
       height:67px;
-      background:hsl(120, 33%, 33%);
+      /* background:hsl(120, 33%, 33%); */
       z-index: 1;
       border-bottom: solid 33px rgba(0, 0, 0, 0.1);
       box-shadow: 0 8px 8px black;
@@ -54,7 +54,7 @@
     #ball2 {
       width:110px;
       height:73px;
-      background: hsl(0, 33%, 33%);
+      /* background: hsl(0, 33%, 33%); */
       z-index: 2;
       border-bottom: solid 37px rgba(0, 0, 0, 0.1);
       box-shadow: 0 16px 16px black;
@@ -63,7 +63,7 @@
     #ball3 {
       width:120px;
       height:80px;
-      background: hsl(240, 33%, 33%);
+      /* background: hsl(240, 33%, 33%); */
       z-index: 3;
       border-bottom: solid 40px rgba(0, 0, 0, 0.1);
       box-shadow: 0 24px 24px black;
@@ -92,14 +92,16 @@
 
   <script>
 
-    let limitX = 600;
-    let limitY = 350;    
-    let positionX1 = Math.random() * limitX;
-    let positionY1 = Math.random() * limitY;
-    let positionX2 = Math.random() * limitX;
-    let positionY2 = Math.random() * limitY;
-    let positionX3 = Math.random() * limitX;
-    let positionY3 = Math.random() * limitY;
+    let limitX = window.innerWidth - 100;
+    let limitY = window.innerHeight - 100;
+    console.log("limitX: " + limitX);
+    console.log("limitY: " + limitY);
+    let positionX1 = Math.random() * (limitX - 100);
+    let positionY1 = Math.random() * (limitY - 100);
+    let positionX2 = Math.random() * (limitX - 110);
+    let positionY2 = Math.random() * (limitY - 110);
+    let positionX3 = Math.random() * (limitX - 120);
+    let positionY3 = Math.random() * (limitY - 120);
     let velocityX1 = 1;
     let velocityY1 = 1;
     let velocityX2 = 1;
@@ -112,12 +114,16 @@
 
     const ball1 = document.querySelector("#ball1");
     const ball2 = document.querySelector("#ball2");
+    const ball3 = document.querySelector("#ball3");
+
+    document.querySelector(".court").style.width = `${limitX}px`;
+    document.querySelector(".court").style.height = `${limitY}px`;
 
     const moveBall1 = () => {
-        if (positionX1 >= limitX + 20 || positionX1 <= 0) {
+        if (positionX1 >= limitX - 100 || positionX1 <= 0) {
           velocityX1 = velocityX1 * -1;
         }
-        if (positionY1 >= limitY + 20 || positionY1 <= 0) {
+        if (positionY1 >= limitY - 100 || positionY1 <= 0) {
           velocityY1 = velocityY1 * -1;
         }
         if (hue1 === 360) {hue1 = 0}
@@ -126,14 +132,15 @@
         positionY1 = positionY1 + velocityY1;
         ball1.style.left = positionX1 + "px";
         ball1.style.top = positionY1 + "px";
-        ball1.style.background = `hsl(${hue1}, 25%, 25%)`;
+        ball1.style.background = `hsl(${hue1}, 40%, 40%)`;
+        ball1.style.boxShadow = `0 4px 8px hsl(${hue1}, 67%, 8%)`;
     }
 
     const moveBall2 = () => {
-        if (positionX2 >= limitX + 10 || positionX2 <= 0) {
+        if (positionX2 >= limitX - 110 || positionX2 <= 0) {
           velocityX2 = velocityX2 * -1;
         }
-        if (positionY2 >= limitY + 10 || positionY2 <= 0) {
+        if (positionY2 >= limitY - 110 || positionY2 <= 0) {
           velocityY2 = velocityY2 * -1;
         }
         if (hue2 === 360) {hue2 = 0}
@@ -142,14 +149,15 @@
         positionY2 = positionY2 + velocityY2;
         ball2.style.left = positionX2 + "px";
         ball2.style.top = positionY2 + "px";
-        ball2.style.background = `hsl(${hue2}, 30%, 30%)`;
+        ball2.style.background = `hsl(${hue2}, 45%, 45%)`;
+        ball2.style.boxShadow = `0 8px 16px hsl(${hue2}, 80%, 8%)`;
     }
 
     const moveBall3 = () => {
-        if (positionX3 >= limitX || positionX3 <= 0) {
+        if (positionX3 >= limitX - 120 || positionX3 <= 0) {
           velocityX3 = velocityX3 * -1;
         }
-        if (positionY3 >= limitY || positionY3 <= 0) {
+        if (positionY3 >= limitY - 120 || positionY3 <= 0) {
           velocityY3 = velocityY3 * -1;
         }
         if (hue3 === 0) {hue3 = 360}
@@ -158,7 +166,8 @@
         positionY3 = positionY3 + velocityY3;
         ball3.style.left = positionX3 + "px";
         ball3.style.top = positionY3 + "px";
-        ball3.style.background = `hsl(${hue3}, 40%, 40%)`;
+        ball3.style.background = `hsl(${hue3}, 50%, 50%)`;
+        ball3.style.boxShadow = `0 12px 24px hsl(${hue3}, 100%, 8%)`;
     }
 
     setInterval(moveBall1, 14);
