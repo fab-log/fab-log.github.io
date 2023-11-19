@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>painting</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .main {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main"></div>
+    <script>
+        const quotient = 5;
+        width = window.innerWidth / quotient;
+        height = window.innerHeight / quotient;
+        let resolution = width * height;
+        console.log({width});
+        console.log({height});
+        console.log({resolution});
+        x = 0;
+        y = 0;
+        const array = [];
+        for (var i = 0; i <= resolution; i++) {
+            let n = i + 1;
+            array.push(n);
+        }
+        console.log({array});
+        array.forEach(e => {
+            let hue = Math.random() * 30 + 90;
+            let sat = Math.random() * 10 + 45;
+            let lit = Math.random() * 10 + 45;
+            let centerX = width / 2;
+            let centerY = height / 2;
+            // console.log("x / width = " + x / width + ", y / height = " + y / height);
+            const dot = document.createElement("div");
+            // dot.id = `id${e}`;
+            document.querySelector(".main").appendChild(dot);
+            dot.style.position = "fixed";
+            dot.style.marginLeft = `${x}px`;
+            dot.style.marginTop = `${y}px`;
+            dot.style.width = `${quotient}px`;
+            dot.style.height = `${quotient}px`;
+            dot.style.backgroundColor = `hsl(${hue}, ${sat}%, ${lit}%)`;
+            
+            x = x + quotient;
+            if (x >= (width - 1) * quotient) {
+                x = 0;
+                y = y + quotient;
+            }
+        });
+    </script>
+</body>
+</html>
