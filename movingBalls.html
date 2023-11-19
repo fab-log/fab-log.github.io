@@ -7,7 +7,7 @@
 
   <style>
     body {
-      background-color: hsl(0, 0%, 12%);
+      background-color: hsl(0, 0%, 6%);
     }
 
     .court {
@@ -17,19 +17,18 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      border: solid 4px hsl(30, 0%, 50%);
+      border: dotted 10px hsl(30, 0%, 10%);
       border-radius: 60px;
+      background-color: hsl(0, 0%, 12%);
+      box-shadow: 0 10px 15px black inset;
     }
 
     .balls {
       position: absolute;
       left:0px;
       top:0px;
-      width:120px;
-      height:120px;
       border-radius:50%;
-      opacity: 0.5;
-      box-shadow: 0 25px 25px black;
+      opacity: 0.98;
     }
 
     .reflexions {
@@ -40,19 +39,39 @@
       height:5px;
       border: solid 3px white;
       border-radius:50%;
-      opacity: 0.2;
+      opacity: 0.1;
     }
 
     #ball1 {
-      background:hsl(120, 50%, 50%)
+      width:100px;
+      height:100px;
+      background:hsl(120, 33%, 33%);
+      z-index: 1;
+      box-shadow: 0 8px 8px black;
     }
 
     #ball2 {
-      background: hsl(0, 50%, 50%);
+      width:110px;
+      height:110px;
+      background: hsl(0, 33%, 33%);
+      z-index: 2;
+      box-shadow: 0 16px 16px black;
     }
 
     #ball3 {
-      background: hsl(240, 50%, 50%);
+      width:120px;
+      height:120px;
+      background: hsl(240, 33%, 33%);
+      z-index: 3;
+      box-shadow: 0 24px 24px black;
+    }
+
+    #ball1 .reflexions {
+      left: 37px;
+    }
+
+    #ball2 .reflexions {
+      left: 42px;
     }
 
   </style>
@@ -92,10 +111,10 @@
     const ball2 = document.querySelector("#ball2");
 
     const moveBall1 = () => {
-        if (positionX1 >= limitX || positionX1 <= 0) {
+        if (positionX1 >= limitX + 20 || positionX1 <= 0) {
           velocityX1 = velocityX1 * -1;
         }
-        if (positionY1 >= limitY || positionY1 <= 0) {
+        if (positionY1 >= limitY + 20 || positionY1 <= 0) {
           velocityY1 = velocityY1 * -1;
         }
         if (hue1 === 360) {hue1 = 0}
@@ -104,14 +123,14 @@
         positionY1 = positionY1 + velocityY1;
         ball1.style.left = positionX1 + "px";
         ball1.style.top = positionY1 + "px";
-        ball1.style.background = `hsl(${hue1}, 50%, 50%)`;
+        ball1.style.background = `hsl(${hue1}, 25%, 25%)`;
     }
 
     const moveBall2 = () => {
-        if (positionX2 >= limitX || positionX2 <= 0) {
+        if (positionX2 >= limitX + 10 || positionX2 <= 0) {
           velocityX2 = velocityX2 * -1;
         }
-        if (positionY2 >= limitY || positionY2 <= 0) {
+        if (positionY2 >= limitY + 10 || positionY2 <= 0) {
           velocityY2 = velocityY2 * -1;
         }
         if (hue2 === 360) {hue2 = 0}
@@ -120,7 +139,7 @@
         positionY2 = positionY2 + velocityY2;
         ball2.style.left = positionX2 + "px";
         ball2.style.top = positionY2 + "px";
-        ball2.style.background = `hsl(${hue2}, 50%, 50%)`;
+        ball2.style.background = `hsl(${hue2}, 30%, 30%)`;
     }
 
     const moveBall3 = () => {
@@ -136,7 +155,7 @@
         positionY3 = positionY3 + velocityY3;
         ball3.style.left = positionX3 + "px";
         ball3.style.top = positionY3 + "px";
-        ball3.style.background = `hsl(${hue3}, 50%, 50%)`;
+        ball3.style.background = `hsl(${hue3}, 40%, 40%)`;
     }
 
     setInterval(moveBall1, 14);
