@@ -36,12 +36,13 @@
         }
         console.log({array});
         array.forEach(e => {
-            let hue = Math.random() * 30 + 90;
-            let sat = Math.random() * 10 + 45;
-            let lit = Math.random() * 10 + 45;
-            let centerX = width / 2;
-            let centerY = height / 2;
-            // console.log("x / width = " + x / width + ", y / height = " + y / height);
+            let indexX = x / quotient / width;
+            let indexY = y / quotient / height;
+            let factor = Math.sin(indexX * 3.141592) * Math.sin(indexY * 3.141592) * 10;
+            let hue = Math.random() * 0.25 + 195;
+            let sat = Math.random() * 0.25 + 45;
+            let lit = (Math.random() * 0.25 + 5) * factor;
+            // console.log(indexX.toFixed(2) + ", " + indexY.toFixed(2) + ", " + lit.toFixed(2))
             const dot = document.createElement("div");
             // dot.id = `id${e}`;
             document.querySelector(".main").appendChild(dot);
