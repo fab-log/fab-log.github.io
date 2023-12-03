@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>paint</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: hsl(0, 0%, 12%);
+        }
+
+        button {
+            background-color: hsl(0, 0%, 76%);
+            color: hsl(0, 0%, 24%);
+            font-family: monospace;
+            font-size: 120%;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+        }
+
+        button:hover {
+            cursor: pointer;
+            filter: contrast(125%);
+        }
+
+        input {
+            width: 100%;
+        }
+
+        td {
+            padding: 0 12px 3px 0;
+        }
+
+        .main {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 90%;
+            max-width: 300px;
+            transform: translate(-50%, -50%);
+            padding: 50px;
+            border-radius: 12px;
+            background-color: hsl(0, 0%, 24%);
+            color: hsl(0, 0%, 76%);
+            font-family: monospace;
+            font-size: 120%;
+            line-height: 1.25;
+        }
+
+        #color-preview {
+            /* float: right; */
+            margin-top: 6px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: hsl(180, 50%, 50%);
+        }
+
+        hr {
+            margin: 24px 0;
+            border: none;
+            border-bottom: solid 1px hsl(0, 0%, 50%);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main"></div>
+
+    <div class="modal">
+        <p>pixel size: <b><span id="displayPixSize">4</span></b></p>
+        <input type="range" id="inpPixSize" min="2" max="25" value="4">
+        <hr>
+        <p>pattern</p>
+        <table>
+            <tr>                
+                <td><input type="radio" id="inpPatternWaves" name="pattern" value="waves" checked></td><td>waves</td>
+                <td><input type="radio" id="inpPatternCurtain" name="pattern" value="curtain"></td><td>curtain</td>
+            </tr>
+            <tr>
+                <td><input type="radio" id="inpPatternBowls" name="pattern" value="bowls"></td><td>bowls</td>
+                <td><input type="radio" id="inpPatternRhombus" name="pattern" value="rhombus"></td><td>rhombus</td>
+            </tr>
+        </table>        
+        <hr>
+        <p>iterations: <b><span id="displayIterations">5</span></b></p>
+        <input type="range" id="inpIterations" min="1" max="50" value="5">
+        <hr>
+        <p>color: <b><span id="displayHue">180</span></b></p>
+        <input type="range" id="inpHue" min="0" max="350" value="180">
+        <hr>
+        <p>saturation: <b><span id="displaySat">50</span></b></p>
+        <input type="range" id="inpSat" min="0" max="90" value="50">
+        <hr>
+        <button id="btnGo" style="float: right;">go</button>
+        <div id="color-preview"></div>
+    </div>
+
+    <script>
+        const inpPixSize = document.querySelector("#inpPixSize");
+        const inpIterations = document.querySelector("#inpIterations");
+        const inpHue = document.querySelector("#inpHue");
+        const inpSat = document.querySelector("#inpSat");
+        const inpPatternBowls = document.querySelector("#inpPatternBowls");
+        const inpPatternWaves = document.querySelector("#inpPatternWaves");
+        const inpPatternCurtain = document.querySelector("#inpPatternCurtain");
+        const inpPatternRhombus = document.querySelector("#inpPatternRhombus");
+
+        document.querySelector("#displayPixSize").textContent = inpPixSize.value;
+        document.querySelector("#displayIterations").textContent = inpIterations.value;
+        document.querySelector("#displayHue").textContent = inpHue.value;
+        document.querySelector("#displaySat").textContent = inpSat.value;
+        document.querySelector("#color-preview").style.backgroundColor = `hsl(${Number(inpHue.value)}, ${Number(inpSat.value)}%, 50%)`;
+        
+        const paint = () => {
+            const pixSize = Number(inpPixSize.value);
+            console.log({pixSize});
+            width = window.innerWidth / pixSize;
+            height = window.innerHeight / pixSize;
+            let resolution = width * height;
+            console.log({width});
+            console.log({height});
+            console.log({resolution});
+            x = 0;
+            y = 0;
+            const iterations = Number(inpIterations.value);
+            const userHue = Number(inpHue.value);
+            const userSat = Number(inpSat.value);
+            console.log({userHue});
+            console.log({userSat});
+
+            const array = [];
+            for (var i = 0; i <= resolution; i++) {
+                let n = i + 1;
+                array.push(n);
+            }
+            console.log({array});
+
+            document.querySelector(".modal").style.display = "none";
+
+            array.forEach(e => {
+                // let factor = Math.sin(indexX * 3.141592) * Math.sin(indexY * 3.141592) * 10;
+                let calcX = Math.sin(x / pixSize / width * 3.141592 * iterations);
+                let calcY = Math.sin(y / pixSize / width * 3.141592 * iterations);
+                let factor = 1;
+                if (inpPatternBowls.checked) {
+                    factor = calcX * calcY * 2.5;
+                    if (factor < 0) {factor = factor * -1};
+                } else if (inpPatternWaves.checked) {
+                    factor = calcX + calcY * 2;
+                    if (factor < 0) {factor = factor * -1};
+                } else if (inpPatternCurtain.checked) {
+                    factor = calcX / calcY;
+                    if (factor < 0) {factor = factor * -1};
+                } else if (inpPatternRhombus.checked) {
+                    factor = (calcX + calcY) * 1.5;
+                    if (factor < 0) {factor = factor * -1};
+                };                
+                
+                let hue = Math.random() * 10 + userHue;
+                let sat = Math.random() * 10 + userSat;
+                let lit = (Math.random() * 0.25 + 25) * factor;
+                // console.log(hue.toFixed(2) + ", " + sat.toFixed(2) + ", " + lit.toFixed(2))
+                const dot = document.createElement("div");
+                // dot.id = `id${e}`;
+                document.querySelector(".main").appendChild(dot);
+                dot.style.position = "fixed";
+                dot.style.marginLeft = `${x}px`;
+                dot.style.marginTop = `${y}px`;
+                dot.style.width = `${pixSize}px`;
+                dot.style.height = `${pixSize}px`;
+                dot.style.backgroundColor = `hsl(${hue}, ${sat}%, ${lit}%)`;
+                
+                x = x + pixSize;
+                if (x >= (width - 1) * pixSize) {
+                    x = 0;
+                    y = y + pixSize;
+                }
+            });
+            };
+        
+        inpPixSize.addEventListener("change", () => {
+            document.querySelector("#displayPixSize").textContent = inpPixSize.value;
+        });
+        inpIterations.addEventListener("change", () => {
+            document.querySelector("#displayIterations").textContent = inpIterations.value;
+        });
+        inpHue.addEventListener("change", () => {
+            document.querySelector("#displayHue").textContent = inpHue.value;
+            document.querySelector("#color-preview").style.backgroundColor = `hsl(${Number(inpHue.value)}, ${Number(inpSat.value)}%, 50%)`;
+        });
+        inpSat.addEventListener("change", () => {
+            document.querySelector("#displaySat").textContent = inpSat.value;
+            document.querySelector("#color-preview").style.backgroundColor = `hsl(${Number(inpHue.value)}, ${Number(inpSat.value)}%, 50%)`;
+        });
+
+        document.querySelector("#btnGo").addEventListener("click", paint);
+        
+    </script>
+</body>
+</html>
