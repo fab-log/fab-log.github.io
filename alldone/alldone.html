@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>all done</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.png">
+    <meta property="og:title" content="all done - Organisiere deine Aufgaben">
+    <meta property="og:description" content="To-do-App mit Unteraufgaben und Restore-Funktion">
+    <meta property="og:image" content="https://www.fablog.eu/allDone/pix/preview.png">
+</head>
+<body>
+
+    <div class="header" id="top-nav">
+        <p id="burger">☰</p>
+        <p id="x">X</p>
+        <img src="pix/all_done.webp" alt="Logo all done App" width="180" id="logo">
+    </div>
+    
+    <div class="menu">
+        <ul>
+            <li id="dark-mode">Dark mode</li>
+            <li id="btn-task-order">Oldest tasks first</li>
+            <li id="btn-imprint">Imprint / Privacy</li>
+        </ul>
+    </div>
+
+    <div class="main">
+
+        <div id="welcome">
+            <h2>Welcome to the all done app!</h2>
+            <h3>Get your tasks organised</h3>
+            <p>Nothing to do right now!</p>
+            <img src="pix/relax.webp" alt="relax" width="60">
+            <p>Click on the plus icon below to add a new task.<br>
+            Depending on its priority it'll change colour.</p>
+            <p>In order to edit a task simply click the title.</p>
+            <p>Tasks can be marked as done but can also be restored if needed.</p>
+        </div>
+
+        <div id="div-tasks"></div>
+
+        <button id="show-completed-tasks" type="submit" style="margin-top: 50px; margin-bottom: 50px">Show completed tasks</button>
+
+        <div class="div-completed-tasks"></div>
+
+    </div>
+
+    <div class="new">
+            <h3 class="new-header" id="new-task-header">New task</h3>
+            <p>Title<br>
+            <input id="new-task-title" type="text" placeholder="Titel"></p>
+            <hr>
+            <p>Description<br>
+            <input id="new-task-description" type="text" placeholder="Beschreibung"></p>
+            <hr>
+            <div>
+                <div>
+                    <p style="float: right; margin: 0;">Due<br>
+                        <input type="date" id="new-task-due-date">
+                    </p>
+                </div>
+                <div>
+                    <p>Priority<br>
+                        <select name="Prio" id="new-task-prio">
+                            <option value="1">urgent</option>
+                            <option value="2" selected>regular</option>
+                            <option value="3">later</option>
+                            </select></p>
+                </div>
+            </div>
+            <hr>
+            <div id="div-subtask-list">
+                <p>Subtasks</p>
+                <div id="subtask-list"></div>
+                <hr>
+            </div>
+            <div id="subtask-add">
+                <p>Add subtask
+                <button id="btn-new-subtask-add" type="submit">+</button><br><br></p>
+                <hr>
+            </div>
+            <div id="subtask-edit">
+                <p>Subtask<br>
+                <input id="new-subtask-description" type="text" placeholder="Beschreibung"></p>
+                <button id="btn-new-subtask-submit" type="submit">save</button>
+                <button id="btn-new-subtask-undo" type="submit">dismiss</button><br><br>
+                <hr>
+            </div>
+            <button id="new-task-submit" type="submit">Save task</button>
+            <button id="edit-task-submit" type="submit">Save changes</button>
+            <button id="new-task-undo" type="submit">dismiss</button>
+    </div>
+
+    <div class="plus">
+        <img src="pix/plusNewTask.webp" id="plus" alt="Pluszeichen" title="Neue Aufgabe hinzufügen">
+    </div>
+
+    <div class="alert" id="alert-title-missing">Please enter a title</div>
+    
+    <div class="alert" id="alert-completed-no-edit">Completed tasks cannot be edited. Please restore the task first.</div>
+    
+    <div class="alert" id="alert-due-date">Due date is in the past</div>
+
+    <div class="new" id="imprint">
+        <p id="close-imprint">X</p>
+        <h1>Imprint</h1>
+
+        <p>Responsible person for this site:<br>
+        Fabian Ruin</p>
+
+        <p>contact:<br>
+        fruin[at]vivaldi.net</p>
+
+        <h1>Privacy<h1>
+
+        <h2>Very simple.</h2>
+        <ul>
+        <li>No advertising.</li>
+        <li>No trackers.</li>
+        <li>No preconnect. <small>(download of third party content)</small></li>
+        </ul>
+
+        <p>Data you provide will be stored in the browser's cache on your device, similar to a cookie. No data is stored in another location nor will any data be transfered to other parties.<br>
+        In order to delete your data you can either delete all browser data or delete the specific data of this site. Usually you can find options to do so in the browser settings menu or in the left corner of the browser's adress bar.</p>
+        
+    </div>
+
+    <script src="done.js"></script>
+
+</body>
+</html>
