@@ -1,0 +1,403 @@
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 300;
+  src: url('dox/font_ubuntu/ubuntu-v20-latin-300.eot'); /* IE9 Compat Modes */
+  src: local(''),
+        url('dox/font_ubuntu/ubuntu-v20-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('dox/font_ubuntu/ubuntu-v20-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+        url('dox/font_ubuntu/ubuntu-v20-latin-300.woff') format('woff'), /* Modern Browsers */
+        url('dox/font_ubuntu/ubuntu-v20-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('dox/font_ubuntu/ubuntu-v20-latin-300.svg#Ubuntu') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 300;
+  src: url('dox/font_ubuntu/ubuntu-v20-latin-300italic.eot'); /* IE9 Compat Modes */
+  src: local(''),
+        url('dox/font_ubuntu/ubuntu-v20-latin-300italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('dox/font_ubuntu/ubuntu-v20-latin-300italic.woff2') format('woff2'), /* Super Modern Browsers */
+        url('dox/font_ubuntu/ubuntu-v20-latin-300italic.woff') format('woff'), /* Modern Browsers */
+        url('dox/font_ubuntu/ubuntu-v20-latin-300italic.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('dox/font_ubuntu/ubuntu-v20-latin-300italic.svg#Ubuntu') format('svg'); /* Legacy iOS */
+}
+
+:root {
+  --background-color: #f4f3ef;
+  --background-color2: #e1e0dc;
+  --color: #363636;
+  --color2: #242424;
+  --accent-color: #aeb8c7;
+  --accent-color2: #d2d5be; /* #d7c9b2; */
+  --prio1: #aa8080;
+  --prio2: #aaa080;
+  --prio3: #9cb69c;
+  --completed: #a0a0a0;
+}
+
+.dark {
+  --background-color: #2e2c2c;
+  --background-color2: #3f3d3d;
+  --color: #d0d0d0;
+  --color2: #dfdfdf;
+  --accent-color: #aeb8c7;
+  --accent-color2: #d2d5be; /* #d7c9b2; */
+  --prio1: #aa8080;
+  --prio2: #aaa080;
+  --prio3: #9cb69c;
+  --completed: #a0a0a0;
+}
+
+.dark .menu {
+  color: #363636;
+}
+
+.dark input, .dark select {
+  background-color: var(--accent-color);
+}
+
+* {
+  /* transition: all 0.5s ease-in-out; */
+  transition: visibility 0s, opacity 0.5s ease-in-out, max-height 0.5s ease-in-out, filter 0.1s ease-in-out;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 0 95px 0;
+  background-color: var(--background-color);
+  font-family: 'Ubuntu', 'Calibri', 'Arial';
+  line-height: 1.4;
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  background-color: var(--accent-color2);
+  font-family: 'Ubuntu', 'Calibri', 'Arial';
+  font-size: medium;
+}
+
+button:hover {
+  cursor: pointer;
+  filter: brightness(110%);
+}
+
+select {
+  border: none;
+  border-radius: 6px;
+  margin-top: 6px;
+  padding: 3px 12px;
+  background-color: white;
+  font-family: 'Ubuntu', 'Calibri', 'Arial';
+  font-size: medium;
+}
+
+img {
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+hr {
+  border: none;
+  border-bottom: solid 2px var(--accent-color);
+}
+
+.main {
+  width: 800px;
+  padding: 12px 25px;
+  margin: 0 auto;
+  background-color: var(--background-color);
+  color: var(--color);
+}
+
+.main button {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.header {
+  width: 450px;
+  height: 60px;
+  padding: 25px 0 0 0;
+  margin: 0 auto;
+  background-color: var(--background-color);
+  color: var(--color);
+}
+
+.header img {
+  position: static;
+  margin-top: 12px;
+  float: left;
+  transform: none;
+}
+
+.menu {
+  margin-top: 12px;
+  max-height: 0px;
+  /* padding-bottom: 25px;
+  height: auto; */
+  visibility: hidden;
+  opacity: 0;
+  text-align: center;
+}
+
+.menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  list-style: none;
+  list-style-type:none;
+  width: 300px;
+  padding: 6px;
+  margin: 12px auto;
+  border-radius: 6px;
+  background-color: var(--accent-color2);
+}
+
+.menu li:hover {
+  cursor: pointer;
+  filter: brightness(110%);
+}
+
+.task {
+  width: calc(95% - 75px);
+  margin: 12px auto;
+  min-height: 120px;
+  padding: 10px 25px;
+  border-radius: 12px;
+  background-color: var(--background-color2);
+  color: var(--color2);
+}
+
+.prio1 {
+  border-left: solid 20px var(--prio1);
+}
+
+.prio1 .task-header {
+  border-bottom: solid var(--prio1) 3px;
+}
+
+.prio2 {
+  border-left: solid 20px var(--prio2);
+}
+
+.prio2 .task-header {
+  border-bottom: solid var(--prio2) 3px;
+}
+
+.prio3 {
+  border-left: solid 20px var(--prio3);
+}
+
+.prio3 .task-header {
+  border-bottom: solid var(--prio3) 3px;
+}
+
+.completed {
+  border-left: solid 20px var(--completed);
+}
+
+.completed .task-header {
+  border-bottom: solid var(--completed) 3px;
+}
+
+.task-header:hover {
+  cursor: pointer;
+}
+
+.task-date {
+  float: right;
+  margin: 5px 0 0 12px;
+  font-size: small;
+  filter: opacity(0.5);
+}
+
+.task-img {
+  position: static;
+  width: 20px;
+  float: right;
+  margin-left: 25px;
+  padding: 6px;
+  background-color: var(--background-color);
+  border-radius: 50%;
+  border: solid 3px var(--accent-color);
+  /* box-shadow: 0 0 3px black; */
+}
+
+.task-img:hover {
+  cursor: pointer;
+  filter: contrast(115%);
+  /* box-shadow: 0 0 3px rgb(24, 24, 24);; */
+}
+
+#div-subtask-list {
+  display: none;
+}
+
+.subtask-item {
+  margin: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  border: solid 1px var(--accent-color);
+  /* min-height: 40px; */
+  width: 75%;
+}
+
+.subtask-item button {
+  margin: 0 0 6px 12px;
+}
+
+.new {
+  visibility: hidden; /* display: none; */
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translate(-50% ,0);
+  width: 0; /* width: calc(75% - 75px); */
+  max-width: 750px;
+  max-height: 0; /* max-height: 1200px; */
+  padding: 10px 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px black;
+  background-color: var(--background-color);
+  color: var(--color2);
+}
+
+.new-header {
+  border-bottom: solid var(--accent-color) 4px;
+}
+
+.show-new {
+  visibility: visible;
+  width: calc(75% - 75px);
+  max-height: 5000px;
+}
+
+.new button {
+  float: right;
+  margin: 6px 0 6px 12px;
+}
+
+.new input {
+  width: calc(100% - 24px);
+  margin-top: 6px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Ubuntu', 'Calibri', 'Arial';
+  font-size: medium;
+}
+
+.plus {
+  position: fixed;
+  left: 50%;
+  /* top: 85%; */
+  bottom: 0;
+  transform: translate(-50%, 0);
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), var(--background-color));
+  /* background-color: var(--background-color);
+  box-shadow: 0 0 4px rgb(24, 24, 24);
+  opacity: 0.95; */
+}
+
+.plus img {
+  width: 150px; /* 36px */
+  margin: 15px 0 12px 0;
+  padding: 9px; /* 6px */
+  border-radius: 36px; /* 50% */
+  /* border: solid 3px var(--accent-color); */
+  box-shadow: 0 0 8px black;
+  background-color: var(--background-color);
+  opacity: 1;
+}
+
+.plus img:hover {
+  cursor: pointer;
+  filter: contrast(115%);
+  box-shadow: 0 0 9px black;
+  /* opacity: 1 */
+}
+
+.alert {
+  display: none;
+  position: fixed;
+  top: 275px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 12px 18px;
+  border-radius: 12px;
+  background-color: rgba(20, 20, 20, 0.95);
+  color: rgb(235, 235, 235);
+  text-align: center;
+}
+
+.div-completed-tasks {
+  display: none;
+}
+
+.show-completed-tasks {
+  display: block;
+}
+
+.show-menu {
+  visibility: visible;
+  max-height: 1500px;
+}
+
+#burger, #x {
+  float: right;
+  font-size: larger;
+  color: var(--accent-color);
+}
+
+#x {
+  display: none;
+}
+
+#close-imprint {
+  float: right;
+  font-size: larger;
+  text-align: center;
+  color: #242424;
+  background-color: var(--accent-color2);
+  width: 25px;
+  padding: 6px 8px;
+  border-radius: 50%;
+}
+
+#close-imprint:hover {
+  cursor: pointer;
+  filter: brightness(110%);
+}
+
+#welcome {
+/* margin: 0 50px;
+padding: 0 20px;
+padding-left: 12px;
+padding-right: 12px; */
+text-align: center;
+}
+
+#welcome p {
+  padding: 0 12px;
+}
+
+#subtask-edit {
+  display: none;
+}
+
+@media (max-width: 850px) {
+  .main {width: 100%; padding: 0;}
+  .header {width: 80%;}
+  .task {width: calc(96% - 59px); margin: 6px auto; padding: 3px 12px;}
+  .new {width: calc(96% - 50px); top: 30px; padding: 10px 12px;}
+}
