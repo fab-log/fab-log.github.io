@@ -4,40 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fabian Ruin</title>
-    <style>
-        body {
-            background-color: hsl(44, 5%, 10%);
-            color: hsl(45, 10%, 67%);
-            margin: 50px 5%;
-            text-align: center;
-            font-family: monospace;
-            font-size: 150%;
-            line-height: 1.25;
-        }
-
-        img {
-            width: 240px;
-            border-radius: 50%;
-            filter: sepia(67%);
-            box-shadow: 0 0 12px hsl(45, 100%, 5%);
-            opacity: 0.9;
-        }
-
-        .underline {
-            margin: 0 auto;
-            width: 100px;
-            border-bottom: 4px solid hsl(45, 10%, 33%);
-            border-radius: 2px;
-        }
-    </style>
+    <link rel="stylesheet" href="./index.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
 </head>
 <body>
-    <img src="./me_20230807.jpg">
-    <h1>Fabian Ruin</h1>
-    <div class="underline"></div>
-    <h3>Cleaned up</h3>
-    <h3>Easy to use</h3>
-    <h3>No distraction</h3>
-    <div class="underline"></div>
+
+    <div class="header">
+        <div class="menu">
+            <img src="pix/flyingBird.webp" alt="icon">
+            <ul>
+                <li id="link-about">about</li>
+                <li id="link-projects">projects</li>
+                <li id="link-terms">terms</li>
+            </ul>
+        </div>        
+    </div>
+
+    <div class="main">
+
+        <div class="modal" id="about">
+            <img src="pix/me_20230807.webp">
+            <h1>Fabian Ruin</h1>
+            <div class="underline"></div>
+            <h3>Cleaned up</h3>
+            <h3>Easy to use</h3>
+            <h3>No distraction</h3>
+            <div class="underline"></div>
+            <h2>Bio</h2>
+            <p><span class="highlight">★</span> Born 1971 <span class="highlight">★</span><br>
+            <span class="highlight">★</span> Located in Germany <span class="highlight">★</span><br>
+            <span class="highlight">★</span> html css Javascript <span class="highlight">★</span><br>
+            <span class="highlight">★</span> Frontend (backend coming soon) <span class="highlight">★</span></p>
+            <p>I started my professional career as a nurse. Today I'm responsible for several nursing homes as an area manager.<br>
+            The lack of professional software for nursing homes made me think: "Why not write it yourself?" By that time I didn't have an idea of the efforts related to such a project. I started with excel sheets, soon added some vba, came across access and finally figured out that a web application would be the best approach. So I took a first dive into html, css and Javascript. Later on I got to know node.js and the vast possibilties of JSON as a database format. At the moment I'm in the MIT xPRO program for full stack development.<br>
+            My goal is to provide clean code for user friendly applications without too many extras.</p>
+            <div class="underline"></div>
+            <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/VrAWKQ2FQH0?si=O-phrAxquYpn3tNU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="margin: 24px 0px; border-radius: 12px;"></iframe> -->
+            <video poster="pix/FabianRuinPoster.png" controls>
+				<source src="pix/FabianRuin.mp4" type="video/mp4">
+			</video>
+            <div class="underline"></div>
+            <h3>Contact</h3>
+            <p><a href="mailto:fruin@vivaldi.net">Mail</a></p>
+            <p><a href="https://www.linkedin.com/in/fabian-ruin-40473a10a/" target="_blank" rel="noopener noreferrer">Linkedin</a></p>
+            <p>GitHub username:<br>fab-log</p>
+            <div class="underline"></div>
+        </div>
+
+        <div class="modal" id="projects">
+
+            <h1>Projects</h1>
+
+            <div class="cards">
+
+                <div class="card" id="moving-balls">
+                    <div class="card-top">
+                        <img src="pix/balls.webp" alt="icon moving balls">
+                    </div>
+                    <div class="card-bottom">
+                        <h3>Moving balls</h3>
+                        <p>A pleasant animation of three balls slowly floating across the screen.</p>
+                        <p>
+                            <a href="https://github.com/fab-log/fab-log.github.io/blob/36b6a643a1651f73583ee716106db94cedc1cd89/movingBalls.html" target="_blank" rel="noopener noreferrer">github</a>
+                        </p>
+                        <p>
+                            <a href="https://fab-log.github.io/movingBalls.html" target="_blank" rel="noopener noreferrer">live demo</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card" id="pacmen">
+                    <div class="card-top">
+                        <img src="pix/pacmen.webp" alt="icon pacmen">
+                    </div>
+                    <div class="card-bottom">
+                        <h3>Pacmen</h3>
+                        <p>An interactive animation with numerous pacmen flying across the screen.</p>
+                        <p>
+                            <a href="https://github.com/fab-log/fab-log.github.io/tree/8ba00d6c796ad2871b3d0dbc95b74a0a85287c90/pacmen" target="_blank" rel="noopener noreferrer">github</a>
+                        </p>
+                        <p>
+                            <a href="https://fab-log.github.io/pacmen/index.html" target="_blank" rel="noopener noreferrer">live demo</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card" id="eyes">
+                    <div class="card-top">
+                        <img src="pix/eye.webp" alt="icon eyes">
+                    </div>
+                    <div class="card-bottom">
+                        <h3>Eyes</h3>
+                        <p>Ever felt the machine is watching you? Here you can control the movement of a pair of eyes looking at you.</p>
+                        <p>
+                            <a href="https://github.com/fab-log/fab-log.github.io/tree/afcdaef170084ae8a24fee5276ccce7cd776d0af/eyeMovement" target="_blank" rel="noopener noreferrer">github</a>
+                        </p>
+                        <p>
+                            <a href="https://fab-log.github.io/eyeMovement/index.html" target="_blank" rel="noopener noreferrer">live demo</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card" id="bus">
+                    <div class="card-top">
+                        <img src="pix/bus.webp" alt="icon bus">
+                    </div>
+                    <div class="card-bottom">
+                        <h3>Bus tracking</h3>
+                        <p>Simulating the lifetime tracking of a bus.</p>
+                        <p>
+                            <a href="" target="_blank" rel="noopener noreferrer">github</a>
+                        </p>
+                        <p>
+                            <a href="" target="_blank" rel="noopener noreferrer">live demo</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card" id="all-done">
+                    <div class="card-top">
+                        <img src="pix/allDone.webp" alt="icon all done app">
+                    </div>
+                    <div class="card-bottom">
+                        <h3>All done</h3>
+                        <p>A feature rich to do application using local storage.</p>
+                        <p>
+                            <a href="https://github.com/fab-log/fab-log.github.io/tree/36b6a643a1651f73583ee716106db94cedc1cd89/alldone" target="_blank" rel="noopener noreferrer">github</a>
+                        </p>
+                        <p>
+                            <a href="https://fab-log.github.io/alldone/alldone.html" target="_blank" rel="noopener noreferrer">live demo</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card" id="calculator">
+                    <div class="card-top">
+                        <img src="pix/calculator.webp" alt="icon calculator">
+                    </div>
+                    <div class="card-bottom">
+                        <h3>calculator</h3>
+                        <p>A stylish web calculator with customizable colors.</p>
+                        <p>
+                            <a href="" target="_blank" rel="noopener noreferrer">github</a>
+                        </p>
+                        <p>
+                            <a href="" target="_blank" rel="noopener noreferrer">live demo</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="modal" id="terms">
+            <h1>Terms</h1>
+        </div>
+        
+    </div>
+
+    <script src="index.js"></script>
+    
 </body>
 </html>
