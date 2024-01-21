@@ -1,0 +1,88 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="calculator.css">
+</head>
+
+
+<body>
+    <div class="calculator">
+        
+        <div class="display">
+            <p id="display">0</p>
+        </div>
+
+        <div class="buttons">
+            <button class="number" id="7">7</button>
+            <button class="number" id="8">8</button>
+            <button class="number" id="9">9</button>
+            <button id="/">/</button><br>
+            <button class="number" id="4">4</button>
+            <button class="number" id="5">5</button>
+            <button class="number" id="6">6</button>
+            <button id="*">*</button><br>
+            <button class="number" id="1">1</button>
+            <button class="number" id="2">2</button>
+            <button class="number" id="3">3</button>
+            <button id="+">+</button><br>
+            <button class="number" id="0">0</button>
+            <button id="(">(</button>
+            <button id=")">)</button>
+            <button id="-">-</button><br>
+            <button class="number" id=".">.</button>
+            <button id="C">C</button>          
+            <button id="del">⌫</button>
+            <button id="=">=</button>            
+        </div>
+
+    </div> <!--close calculator-->
+
+    <div class="color-buttons">
+        <div class="color-button" id="color-button-1">
+            <div class="color-button-outer" style="background-color: #242424;">
+                <div class="color-button-middle" style="background-color: rgb(129, 63, 63);">
+                    <div class="color-button-inner" style="background-color: rgb(70, 34, 34);">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="color-button" id="color-button-2">
+            <div class="color-button-outer" style="background-color: #242424;">
+                <div class="color-button-middle" style="background-color: rgb(59, 59, 120);">
+                    <div class="color-button-inner" style="background-color: rgb(49, 44, 89);">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="color-button" id="color-button-3">
+            <div class="color-button-outer" style="background-color: #242424;">
+                <div class="color-button-middle" style="background-color: rgb(95, 138, 67);">
+                    <div class="color-button-inner" style="background-color: rgb(56, 78, 38);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="calculator" id="history-frame">
+        <div class="history" id="history"></div>
+    </div>
+    
+
+    
+<script src="calculator.js"></script>
+
+
+</body>
+</html>
