@@ -175,12 +175,16 @@ button:active {
     background-color: var(--display-bgc);
     color: var(--display-color);
     border-radius: 15px;
-    /* box-shadow: 0 0 25px black; */
+    box-shadow: inset 1px 1px 3px black;
     text-align: center;
     font-size: large;
     line-height: 1.5;
     overflow-wrap: break-word;
     overflow: hidden;
+}
+
+.history p {
+    margin-top: 15px;
 }
 
 .dark-mode-button {
