@@ -253,5 +253,5 @@ button:active {
     button {height: 50px;}
     .calculator {width: calc(100% - 24px); box-shadow: none; border-radius: 0px; margin: 0; margin-top: 0;}
     .display {height: 244px;}
-    .history {width: 92%; box-shadow: none; border-radius: 15px; margin: auto;}
+    .history {width: 92%; border-radius: 15px; margin: auto;}
 }
