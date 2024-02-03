@@ -69,14 +69,14 @@ function checkCollisions(item) {
     item.newimg.src = './PacMan1.png';
   }
   if (item.position.x + item.newimg.width > window.innerWidth - 25 || item.position.x < 25) {
-    item.newimg.style.filter = "brightness(200%)";
-    item.newimg.style.height = "150px";
-    item.newimg.style.transition = "height 250ms ease-in-out";
+    item.newimg.style.filter = "blur(5px)";
+    item.newimg.style.height = "50px";
+    item.newimg.style.transition = "height 250ms ease-in-out, filter 250ms ease-in-out";
   }
   if (item.position.x + item.newimg.width < window.innerWidth - 25 && item.position.x > 25) {
-    item.newimg.style.filter = "brightness(100%)";
+    item.newimg.style.filter = "blur(0)";
     item.newimg.style.height = "100px";
-    item.newimg.style.transition = "height 250ms ease-in-out";
+    item.newimg.style.transition = "height 250ms ease-in-out, filter 250ms ease-in-out";
   }
 }
 
@@ -85,4 +85,3 @@ function makeOne() {
 }
 //  don't change this line
 //  module.exports = { checkCollisions, update, pacMen };
-
