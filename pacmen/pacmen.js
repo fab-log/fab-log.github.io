@@ -24,7 +24,7 @@ function makePac() {
   let game = document.getElementById('game');
   let newimg = document.createElement('img');
   newimg.style.position = 'absolute';
-  newimg.src = './pacmanRight.gif';
+  newimg.src = './PacMan1.png';
   console.log(newimg.src);
   newimg.width = 100;
 
@@ -59,13 +59,13 @@ function checkCollisions(item) {
   // TODO: detect collision with all walls and make pacman bounce
   if (item.position.x + item.velocity.x + item.newimg.width > window.innerWidth || item.position.x + item.velocity.x < 0) {
     item.velocity.x = item.velocity.x * -1;
-    item.newimg.src = './pacmanLeft.gif';
+    item.newimg.src = './PacMan3.png';
   }
   if (item.position.y + item.velocity.y + item.newimg.height > window.innerHeight || item.position.y + item.velocity.y < 0) {
     item.velocity.y = item.velocity.y * -1
   }
   if (item.velocity.x >= 0) {
-    item.newimg.src = './pacmanRight.gif';
+    item.newimg.src = './PacMan1.png';
   }
 }
 
