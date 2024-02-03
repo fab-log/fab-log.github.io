@@ -60,12 +60,23 @@ function checkCollisions(item) {
   if (item.position.x + item.velocity.x + item.newimg.width > window.innerWidth || item.position.x + item.velocity.x < 0) {
     item.velocity.x = item.velocity.x * -1;
     item.newimg.src = './PacMan3.png';
+    
   }
   if (item.position.y + item.velocity.y + item.newimg.height > window.innerHeight || item.position.y + item.velocity.y < 0) {
     item.velocity.y = item.velocity.y * -1
   }
   if (item.velocity.x >= 0) {
     item.newimg.src = './PacMan1.png';
+  }
+  if (item.position.x + item.newimg.width > window.innerWidth - 25 || item.position.x < 25) {
+    item.newimg.style.filter = "brightness(200%)";
+    item.newimg.style.height = "150px";
+    item.newimg.style.transition = "height 250ms ease-in-out";
+  }
+  if (item.position.x + item.newimg.width < window.innerWidth - 25 && item.position.x > 25) {
+    item.newimg.style.filter = "brightness(100%)";
+    item.newimg.style.height = "100px";
+    item.newimg.style.transition = "height 250ms ease-in-out";
   }
 }
 
