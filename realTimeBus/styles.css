@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.map-overlay {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+}
+
+.button {
+  font-size: 150%;
+  background-color: #e1b224;
+  padding: 6px 12px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.marker {
+  z-index: 100;
+  background-image: url('./bus.webp');
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.stop {
+  z-index: 99;
+  position: absolute;
+  background-color: #e1b224;
+  background-image: linear-gradient(45deg, #644b00, #644b00 6px, #e1b224 7px);
+  padding: 4px 21px 4px 21px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+  box-shadow: 12px 0px 24px rgba(0, 0, 0, 0.5);
+  font-family: sans-serif;
+}
