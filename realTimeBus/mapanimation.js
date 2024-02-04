@@ -16,11 +16,11 @@
 
 const busStops = [
 	[7.2177671956741865, 51.44325697840824, "Am Steinknapp"],
-	[7.225142182477071, 51.44636757730474, "Immenweg"],
-	[7.22992698609481, 51.448413670125866, "Königsallee/Markstraße"],
-	[7.231628460779371, 51.451986235842185, "Wiemelhauser Straße"],
-	[7.22858684387497, 51.45506734835227, "Bruchstraße"],
-	[7.228312901927623, 51.45930692921864, "Förderstraße"],
+	[7.225142182477071, 51.44636757730474, "Königsallee/Markstraße"],
+	[7.22992698609481, 51.448413670125866, "Wiemelhauser Straße"],
+	[7.231628460779371, 51.451986235842185, "Bruchstraße"],
+	[7.22858684387497, 51.45506734835227, "Förderstraße"],
+	[7.228312901927623, 51.45930692921864, "Friedrich-Harkort-Straße"],
 	[7.228860695827742, 51.46288149433191, "Trimonte"],
 	[7.233170869653092, 51.463725701741, "Wasserstraße"],
 	[7.229941860296237, 51.46776689329508, "Aral Forschung"],
@@ -39,7 +39,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZmFibG9nIiwiYSI6ImNsczBvYjJpcjAzdTEybW1rbjByN
 let map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/streets-v12', // 'mapbox://styles/mapbox/streets-v11', // 'mapbox://styles/mapbox/light-v11'
-  center: [7.228860695827742, 51.46288149433191],
+  center: [7.228860695827742, 51.46288149433191], // [-71.108717, 42.368355]
   zoom: 13,
 });
 
@@ -47,7 +47,7 @@ let map = new mapboxgl.Map({
 const bus = document.createElement('div');
 bus.className = 'marker';
 var marker = new mapboxgl.Marker(bus)
-.setLngLat([7.2177671956741865, 51.44325697840824])
+.setLngLat([7.2177671956741865, 51.44325697840824]) // [-71.093729, 42.359244]
 .addTo(map);
 
 // counter here represents the index of the current bus stop
