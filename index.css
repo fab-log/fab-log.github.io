@@ -178,6 +178,7 @@ video {
 .card-top img {
 	width: 84px;
 	opacity: 0.75;
+	border: none;
 }
 
 .card-top, .card-bottom {
@@ -193,7 +194,7 @@ video {
 }
 
 .underline {
-	margin: 15px auto;
+	margin: 24px auto;
 	width: 180px;
 	height: var(--border-width);
 	/* border-bottom: 2px solid var(--background-color4); */
