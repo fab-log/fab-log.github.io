@@ -72,10 +72,6 @@ video {
 	width: max-content;
 }
 
-.menu img {
-	width: 50px;
-}
-
 .menu ul {
 	padding-inline-start: 0;
 	margin-top: 0px;
@@ -99,7 +95,7 @@ video {
 }
 
 .main img {
-	width: 200px;
+	width: 150px;
 	border-radius: 50%;
 	border: var(--border-width) solid var(--background-color4);
 	filter: sepia(67%);
