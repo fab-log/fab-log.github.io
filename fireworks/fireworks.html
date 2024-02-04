@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fireworks</title>
+
+    <style>
+
+        :root {
+            --background-color: hsl(0, 0%, 12%);
+            --color: hsl(0, 0%, 88%);
+            --grey: hsl(0, 0%, 50%);
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--color);
+            font-family: monospace;
+            font-size: 120%;
+            line-height: 1.25;
+        }
+
+        hr {
+            border: none;
+            border-bottom: solid 1px var(--grey);
+        }
+
+        button {
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-family: monospace;
+            font-size: 120%;
+            background-color: var(--color);
+            color: var(--background-color);
+        }
+
+        button:hover {
+            cursor: pointer;
+            filter: contrast(125%);
+        }
+
+        .shot {
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            border-radius: 50%;
+        }
+
+        .modal {
+            position: absolute;
+            bottom: 5%;
+            right: 5%;
+            /* transform: translate(50%, 50%); */
+            width: 50px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px black;
+            padding: 24px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="modal">
+        <button id="go">go</button>
+    </div>
+
+    <script>
+
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        console.log({width});
+        console.log({height});
+
+        const shoot = () => {
+            const shot = document.createElement("div");
+            let size = Math.random() * 12;
+            let hue = Math.random() * 360;
+            let sat = Math.random() * 30 + 70;
+            let lit = Math.random() * 30 + 70;
+            let opacity = 0;
+            shot.className = "shot";
+            shot.style.width = `${size}px`;
+            shot.style.height = `${size}px`;
+            shot.style.backgroundColor = `hsl(${hue}, ${sat}%, ${lit}%)`;
+            document.body.appendChild(shot);
+            let posX = width / 2;
+            let posY = 0;
+            let velX = Math.random() * width / 55 - width / 110;
+            let randomVel = Math.random(); // Math.random() * height / 10;
+            for (let i = 0; i <= 50; i++) {
+                setTimeout(() => {  
+                    let velY = (Math.sin(i / 10) * height / 20) * randomVel;
+                    posX += velX;
+                    posY += velY;
+                    if (i < 25) {
+                        opacity = opacity + 0.04;
+                        shot.style.opacity = `${opacity}`;
+                    } else {
+                        opacity = opacity - 0.04;
+                        shot.style.opacity = `${opacity}`;
+                    }
+                    shot.style.left = `${posX}px`;
+                    shot.style.bottom = `${posY}px`;
+                }, i * 40);
+            };
+        };
+
+        document.querySelector("#go").addEventListener("click", () => {
+            for (let i = 0; i < 120; i++) {
+                shoot();
+            }            
+        });
+
+    </script>
+    
+</body>
+</html>
