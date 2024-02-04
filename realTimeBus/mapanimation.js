@@ -71,6 +71,6 @@ function move() {
     document.body.appendChild(stop);
     counter += 1;
     move();
-  }, 2000)
+  }, 1500)
   
 }
