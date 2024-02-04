@@ -239,8 +239,8 @@
                 star.style.height = individualSize + "px";
                 let individualSat = sat - Math.floor(Math.random() * sat * 0.5);
                 let individualLightness = lightness - Math.floor(Math.random() * lightness * 0.5);
-                star.style.background = `linear-gradient(to bottom, hsl(${hue}, ${individualSat}%, 50%), hsl(${hue}, ${individualSat}%, ${individualLightness}%))`;
-                // star.style.backgroundColor = `hsl(${hue}, ${individualSat}%, 50%)`;
+                // star.style.background = `linear-gradient(to bottom, hsl(${hue}, ${individualSat}%, 50%), hsl(${hue}, ${individualSat}%, ${individualLightness}%))`;
+                star.style.backgroundColor = `hsl(${hue}, ${individualSat}%, ${individualLightness}%)`;
                 main.appendChild(star);
                 star.style.animation = `glow ${variation}ms ease-in-out infinite`;
             },  i);
