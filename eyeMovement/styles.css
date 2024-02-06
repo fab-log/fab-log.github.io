@@ -4,6 +4,20 @@ body {
   background: #14495e;
 }
 
+.face {
+  z-index: -1;
+  position: absolute;
+  width: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+  opacity: 0.2;
+}
+
+.face img {
+  width: 100%;
+}
+
 .eyes {
   position: absolute;
   top: 50%;
