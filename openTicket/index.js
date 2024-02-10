@@ -504,9 +504,9 @@ btnLightMode.onclick = () => {
 btnDarkMode.onclick = () => {
     document.body.classList.remove("light-mode");
     const bubble = document.querySelectorAll(".bubble");
-    bubble.forEach((e) => {
+    /* bubble.forEach((e) => {
         e.classList.remove("brightBubble");
-    });
+    }); */
     document.querySelectorAll("img").forEach(e => {
         e.classList.add("imgInvert");
     });
@@ -650,8 +650,6 @@ const renderList = (listArray) => {
         ticketList.rows[i].remove();
         ticketList.tBodies[i].remove();
     }
-
-    rank(listArray);
 
     listArray.forEach(element => {
         if (element.prio.at(-1).value != -1) {
@@ -1467,37 +1465,43 @@ const removeFilterListeners = () => {
 btnUndoFilterByDate.addEventListener("click", () => {
     resetSortAndFilterButtons();
     selFilter.removeEventListener("change", fnFilterByDate);
-    renderList(tickets);
+    rank(sortedTickets);
+    renderList(sortedTickets);
 });
 
 btnUndoFilterByTitle.addEventListener("click", () => {
     resetSortAndFilterButtons();
     selFilter.removeEventListener("change", fnFilterByTitle);
-    renderList(tickets);
+    rank(sortedTickets);
+    renderList(sortedTickets);
 });
 
 btnUndoFilterByDescription.addEventListener("click", () => {
     resetSortAndFilterButtons();
     selFilter.removeEventListener("change", fnFilterByDescription);
-    renderList(tickets);
+    rank(sortedTickets);
+    renderList(sortedTickets);
 });
 
 btnUndoFilterByDueDate.addEventListener("click", () => {
     resetSortAndFilterButtons();
     selFilter.removeEventListener("change", fnFilterByDueDate);
-    renderList(tickets);
+    rank(sortedTickets);
+    renderList(sortedTickets);
 });
 
 btnUndoFilterByOwner.addEventListener("click", () => {
     resetSortAndFilterButtons();
     selFilter.removeEventListener("change", fnFilterByOwner);
-    renderList(tickets);
+    rank(sortedTickets);
+    renderList(sortedTickets);
 });
 
 btnUndoFilterByPriority.addEventListener("click", () => {
     resetSortAndFilterButtons();
     selFilter.removeEventListener("change", fnFilterByPriority);
-    renderList(tickets);
+    rank(sortedTickets);
+    renderList(sortedTickets);
 });
 
 btnSearch.addEventListener("click", () => {
@@ -1529,8 +1533,9 @@ btnResetSearch.addEventListener("click", () => {
     btnSearch.style.display = "block";
     resetSortAndFilterButtons();
     sortedTickets = tickets.filter(element => element);
+    renderBubbles(sortedTickets);
+    rank(sortedTickets);
     renderList(sortedTickets);
-    renderBubbles(sortedTickets)
     if (listType === "bubbles") {
         displayBubbleList();
     } else if (listType === "table") {
@@ -1574,6 +1579,7 @@ document.querySelectorAll("img").forEach(e => {
 logo.classList.remove("imgInvert");
 logoStacked.classList.remove("imgInvert");
 
+rank(sortedTickets);
 renderList(sortedTickets);
 renderBubbles(sortedTickets);
 if (listType === "bubbles") {
