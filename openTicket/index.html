@@ -77,56 +77,60 @@
             </div>
 
             <div id="mdDivEdit">
-                <table>                
-                    <tr>
-                        <td class="dimmedFont">title</td>
-                        <td><input type="text" id="mdInpTitle"></td>
-                    </tr>
-                    <tr>
-                        <td class="dimmedFont">due date</td>
-                        <td><input type="date" id="mdInpDueDate"></td>
-                    </tr>
-                    <tr>
-                        <td class="dimmedFont">priority</td>
-                        <td>
-                            <select id="mdSelPrio">
-                                <option value="" selected disabled>select</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="dimmedFont">color</td>
-                        <td class="green"><input type="range" id="mdInpColor" min="0" max="360" step="30"></td>
-                    </tr>
-                </table>
-                <p class="dimmedFont">description<br>
-                    <textarea id="mdTaDescription"></textarea>
-                </p>
+                <form id="frmTicket">
+                    <table>                
+                        <tr>
+                            <td class="dimmedFont">title</td>
+                            <td><input type="text" id="mdInpTitle"></td>
+                        </tr>
+                        <tr>
+                            <td class="dimmedFont">due date</td>
+                            <td><input type="date" id="mdInpDueDate"></td>
+                        </tr>
+                        <tr>
+                            <td class="dimmedFont">priority</td>
+                            <td>
+                                <select id="mdSelPrio">
+                                    <option value="" selected disabled>select</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="dimmedFont">color</td>
+                            <td class="green"><input type="range" id="mdInpColor" min="0" max="360" step="30"></td>
+                        </tr>
+                    </table>
+                    <p class="dimmedFont">description<br>
+                        <textarea id="mdTaDescription"></textarea>
+                    </p>
+                </form>
             </div>
 
             <div class="entry">
-                <p class="dimmedFont small"><span id="mdSubtaskDate"></span> | <span id="mdSubtaskEditor"></span></p>
-                <table>
-                    <tr>
-                        <td class="dimmedFont">type</td>
-                        <td>
-                            <select id="mdSelSubtaskType">
-                                <option value="" selected disabled>select</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="dimmedFont">state</td>
-                        <td>
-                            <select id="mdSelSubtaskState">
-                                <option value="" selected disabled>select</option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-                <p class="dimmedFont">note<br>
-                    <textarea id="mdTaNote"></textarea>
-                </p>
+                <form id="frmEntry">
+                    <p class="dimmedFont small"><span id="mdSubtaskDate"></span> | <span id="mdSubtaskEditor"></span></p>
+                    <table>
+                        <tr>
+                            <td class="dimmedFont">type</td>
+                            <td>
+                                <select id="mdSelSubtaskType">
+                                    <option value="" selected disabled>select</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="dimmedFont">state</td>
+                            <td>
+                                <select id="mdSelSubtaskState">
+                                    <option value="" selected disabled>select</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <p class="dimmedFont">note<br>
+                        <textarea id="mdTaNote"></textarea>
+                    </p>
+                </form>
             </div>
 
             <figure id="mdBtnSaveTicket" class="mdBtn">

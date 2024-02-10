@@ -472,6 +472,8 @@ doQuSe(mdDivEdit);
 doQuSe(mdDivDisplaySubtasks);
 doQuSe(mdHr);
 doQuSe(mdInpColor)
+doQuSe(frmTicket);
+doQuSe(frmEntry);
 
 doQuSe(btnConfirmDone);
 doQuSe(btnDismissDone);
@@ -723,6 +725,7 @@ const displayModalTicket = () => {
         element.style.display = "none";
     });
     modalTicket.style.display = "block";
+    frmTicket.reset();
     mdBtn.forEach(e => {
         e.style.display = "none";
     });
@@ -797,6 +800,7 @@ const displayNewTicket = () => {
 
 const displaySubtaskEdit = () => {
     entry.style.display = "block";
+    frmEntry.reset();
     mdBtnAddEntry.style.display = "none";
     mdBtnDismiss.style.display = "block";
     if (mdDivEdit.style.display === "block") {                      // new ticket
