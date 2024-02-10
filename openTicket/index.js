@@ -493,9 +493,9 @@ const showAlert = (text) => {
 btnLightMode.onclick = () => {
     document.body.classList.add("light-mode");
     const bubble = document.querySelectorAll(".bubble");
-    bubble.forEach((e) => {
+    /* bubble.forEach((e) => {
         e.classList.add("brightBubble");
-    });
+    }); */
     document.querySelectorAll("img").forEach(e => {
         e.classList.remove("imgInvert");
     });
@@ -613,54 +613,47 @@ const renderBubbles = (listArray) => {
             if (description.length > 30) {description = description.substring(0, 25) + " ..."};
             
             let warningPrio = "";
-            if (listArray[i].prio.at(-1).value > 1) {warningPrio = `<span class="iconMini"><img src="pix/warning.webp" title="high priority"></span>`}
+            let randomTime = Math.random() * 4 + 6;
+            if (listArray[i].prio.at(-1).value > 1) {warningPrio = `<span class="iconMini"><img src="pix/warning.webp" title="high priority" style="animation: flash ${randomTime}s ease-in infinite;"></span>`}
             
             let warningDue = "";
             if (listArray[i].dueDate.at(-1).value <= dateToString(Date.now()) && listArray[i].dueDate.at(-1).value != "") {
-                warningDue = `<img src="pix/alarmClock.webp" title="due">`
+                warningDue = `<img src="pix/alarmClock.webp" title="due"  style="animation: flash ${randomTime}s ease-out infinite;">`
             }
-            let due = `<p class="small">due ${listArray[i].dueDate.at(-1).value}<br>
-            <span class="iconMini">${warningDue}</span> ${warningPrio}</p>`;
-            if (listArray[i].dueDate.at(-1).value === "") {due = `${warningPrio}`};
+            let infoString = `<p class="small">due ${listArray[i].dueDate.at(-1).value}<br>
+            <span class="iconMini">${warningDue} </span> ${warningPrio}</p>`;
+            if (listArray[i].dueDate.at(-1).value === "") {infoString = `${warningPrio}`};
             
             modalBubbles.insertAdjacentHTML("beforeend", `
             <div class="grid-element">
-                <div class="bubble" id="bubble_${ticketId}" style="margin-top: ${marginTop}px; margin-left: ${marginLeft}px; background-color: hsl(${listArray[i].bubbleHue}, 19%, 25%);">
+                <div class="bubble" id="bubble_${ticketId}" style="margin-top: ${marginTop}px; margin-left: ${marginLeft}px; border: 6px solid hsl(${listArray[i].bubbleHue}, 20%, 50%); border-left: 24px solid hsl(${listArray[i].bubbleHue}, 20%, 50%); border-right: 24px solid hsl(${listArray[i].bubbleHue}, 20%, 50%);">
                     <p class="small">${listArray[i].owner.at(-1).value}</p>
                     <p class="small">${dateAndTimeToString(listArray[i].date.at(-1).value)}</p>
-                    <h3>${title}</h3>
+                    <h3 style="color: hsl(${listArray[i].bubbleHue}, 20%, 50%);">${title}</h3>
                     <p>${description}</p>
-                    ${due}
+                    ${infoString}
                 </div>
             </div>
-            `); //  border: solid ${borderWidth} hsl(${listArray[i].bubbleHue}, 50%, 50%);
+            `);
             let currentBubble = document.querySelector(`#bubble_${listArray[i].id}`);
-            let randomTime = Math.random() * 1000;
-            if (listArray[i].prio.at(-1).value > 1) {
-                setTimeout(() => {
-                    currentBubble.classList.add("bubbleHighlight");
-                }, i * randomTime);
-            };          
             currentBubble.addEventListener("click", () => {
                 displayTicket(ticketId);
             });
         }
         
     };
+
+    let modalBubblesImg = document.querySelectorAll(".modalBubbles img");
     if (document.body.classList.contains("light-mode")) {
-        document.querySelectorAll(".bubble").forEach(e => {
-            e.classList.add("brightBubble");
+        modalBubblesImg.forEach(e => {
+            e.classList.remove("imgInvert");
         })
     } else {
-        document.querySelectorAll(".modalBubbles img").forEach(e => {
+        modalBubblesImg.forEach(e => {
             e.classList.add("imgInvert");
         });
     };
-    /* if (document.body.classList.contains("light-mode") === false) {
-        document.querySelectorAll(".modalBubbles img").forEach(e => {
-            e.classList.add("imgInvert")
-        });
-    }; */
+
     window.scroll(0, 0);
 };
 
