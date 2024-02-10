@@ -495,9 +495,6 @@ const showAlert = (text) => {
 btnLightMode.onclick = () => {
     document.body.classList.add("light-mode");
     const bubble = document.querySelectorAll(".bubble");
-    /* bubble.forEach((e) => {
-        e.classList.add("brightBubble");
-    }); */
     document.querySelectorAll("img").forEach(e => {
         e.classList.remove("imgInvert");
     });
@@ -548,17 +545,6 @@ const dateAndTimeToString = (jsTimestamp) => {
         return `${year}-${month}-${day} | ${hour}:${minute}`
     }
 };
-
-// const filteredTickets = tickets.filter(element => element);
-
-/* if (listType === "bubbles") {
-    list.style.display = "none";
-    modalBubbles.style.display = "block";
-    modalTicket.classList.add("modalTicketBubble");
-} else {
-    list.style.display = "block";
-    modalBubbles.style.display = "none";
-}; */
  
 const renderBubbles = (listArray) => {
     modals.forEach(e => {
@@ -566,16 +552,24 @@ const renderBubbles = (listArray) => {
     });
     modalBubbles.style.display = "block";
     const offsetWidth = modalBubbles.offsetWidth;
+
+    listArray.sort((a, b) => {
+        if (a.dueDate.at(-1).value > b.dueDate.at(-1).value) {return 1}
+        if (a.dueDate.at(-1).value < b.dueDate.at(-1).value) {return -1}
+        return 0;
+    });
     listArray.forEach(e => {
         if (e.prio.at(-1).value > 1 && e.dueDate.at(-1).value <= dateToString(Date.now()) && e.dueDate.at(-1).value != "") {
-            e.ranking = 4;
+            e.ranking = 5;
         } else if (e.prio.at(-1).value > 2) {
-            e.ranking = 3;
+            e.ranking = 4;
         } else if (e.prio.at(-1).value > 1) {
-            e.ranking = 2;
+            e.ranking = 3;
         } else if (e.dueDate.at(-1).value <= dateToString(Date.now()) && e.dueDate.at(-1).value != "") {
+            e.ranking = 2;
+        } else if (e.dueDate.at(-1).value != "") {
             e.ranking = 1;
-        } else {
+        } else if (e.dueDate.at(-1).value === "") {
             e.ranking = 0
         }
     });
@@ -584,15 +578,7 @@ const renderBubbles = (listArray) => {
         if (a.ranking > b.ranking) {return -1}
         return 0;
     });
-    /* listArray.sort((a, b) => {
-        if (a.prio.at(-1).value < b.prio.at(-1).value) {
-            return 1;
-        }
-        if (a.prio.at(-1).value > b.prio.at(-1).value) {
-            return -1;
-        }
-            return 0;
-    }); */
+
     modalBubbles.innerHTML = "";
     for (i = 0; i < listArray.length; i++) {
         let ticketId = listArray[i].id;
@@ -603,12 +589,7 @@ const renderBubbles = (listArray) => {
             else if (offsetWidth < 876) {factor = 1};
             let marginLeft = Math.floor(Math.random() * (offsetWidth / factor - 360));
             let marginTop = Math.floor(Math.random() * 50);
-            /* if (i % 2 === 0) {
-                marginLeft = Math.random() * (offsetWidth / 2 - 400);
-            } else {
-                marginLeft = Math.random() * (offsetWidth / 2 - 400) + offsetWidth / 2;
-            };
-            if (offsetWidth < 900) {marginLeft = Math.random() * (offsetWidth - 300)}; */
+
             let title = listArray[i].title.at(-1).value;
             if (title.length > 20) {title = title.substring(0, 30) + " ..."};
             let description = listArray[i].description.at(-1).value;
