@@ -545,14 +545,8 @@ const dateAndTimeToString = (jsTimestamp) => {
         return `${year}-${month}-${day} | ${hour}:${minute}`
     }
 };
- 
-const renderBubbles = (listArray) => {
-    modals.forEach(e => {
-        e.style.display = "none";
-    });
-    modalBubbles.style.display = "block";
-    const offsetWidth = modalBubbles.offsetWidth;
 
+const rank = (listArray) => {
     listArray.sort((a, b) => {
         if (a.dueDate.at(-1).value > b.dueDate.at(-1).value) {return 1}
         if (a.dueDate.at(-1).value < b.dueDate.at(-1).value) {return -1}
@@ -578,6 +572,17 @@ const renderBubbles = (listArray) => {
         if (a.ranking > b.ranking) {return -1}
         return 0;
     });
+    return listArray;
+}
+ 
+const renderBubbles = (listArray) => {
+    modals.forEach(e => {
+        e.style.display = "none";
+    });
+    modalBubbles.style.display = "block";
+    const offsetWidth = modalBubbles.offsetWidth;
+
+    rank(listArray);
 
     modalBubbles.innerHTML = "";
     for (i = 0; i < listArray.length; i++) {
@@ -645,6 +650,9 @@ const renderList = (listArray) => {
         ticketList.rows[i].remove();
         ticketList.tBodies[i].remove();
     }
+
+    rank(listArray);
+
     listArray.forEach(element => {
         if (element.prio.at(-1).value != -1) {
             let title = element.title.at(-1).value;
